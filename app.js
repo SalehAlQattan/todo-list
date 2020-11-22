@@ -1,16 +1,19 @@
+// Requiring packages
 const express = require('express');
 const bodyParser = require('body-parser');
 const { render } = require('ejs');
 const app = express();
 
+// Declaring varibales
 let items = ['Buy Food', 'Cook Food', 'Eat Food'];
 let workItems = [];
 
+// Using express package
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-
+// Handling routes
 app.get('/', (req, res) => {
     let today = new Date();
     let options = {
@@ -48,7 +51,7 @@ app.post('/work', (req, res) => {
 });
 
 
-
+// Running the port
 app.listen(3000, () => {
     console.log('The server is running on port 3000...');
 });
